@@ -1,0 +1,61 @@
+
+
+*background:           					 #ffffff
+*foreground:           					 #666666
+*cursorColor:          					 #ddddce
+*pointerColorBackground:				 #ddddce
+*pointerColorForeground:				 #f6f6e6
+
+
+!! black dark/light
+*color0:               					 #282828
+*color8:               					 #828282
+
+!! red dark/light
+*color2:                				 #870000
+*color10:              					 #cc2020
+
+!! green dark/light
+*color1:               					 #6acd94
+*color9:                				 #c1fca6
+
+!! yellow dark/light
+*color3:               					 #ffe84f
+*color11:              					 #faff7f
+
+!! blue dark/light
+*color4:               					 #83a4d5
+*color12:              					 #b4d5f6
+
+!! cyan dark/light
+*color6:               					 #83a4d5
+*color14:              					 #b4d5f6
+
+!! white dark/light
+*color7:               					 #fffccc
+*color15:              					 #f2f2f2
+
+Xcursor.theme:						 Adwaita
+Xcursor.size:  						 0
+
+URxvt.font: 						 xft:hack-regular:size=10
+URxvt.letterSpace: 1
+URxvt.depth: 32
+URxvt*background: 		     			 black
+URxvt*scrollBar:                     			 false
+URxvt*mouseWheelScrollPage:           			 false
+URxvt*cursorBlink:                   			 true
+URxvt*foreground:                    			 white
+URxvt*saveLines:                     			 5000
+
+rofi.font:             					 hack 12
+rofi.width:                  			         40
+rofi.lines:                  			         6
+rofi.columns:                        			 1
+rofi.color-enabled: 				 	 true
+rofi.color-window: 					 #000000, #000000, #000000
+rofi.color-normal:					 #000000, #ffffff, #000000, #333333, #ffffff
+rofi.color-active:					 #002b37, #008ed4, #002b37, #003642, #008ed4
+rofi.color-urgent: 					 #002b37, #da4281, #002b37, #003642, #da4281
+
+
