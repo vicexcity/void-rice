@@ -1,0 +1,268 @@
+========================================
+; 
+; P     O     L     Y     B     A     R
+; 
+;========================================
+
+###
+
+[colors]
+background = ${xrdb:color0:#222}
+foreground = ${xrdb:color7:#222}
+foreground-alt = ${xrdb:color7:#222}
+background-alt = #444
+highlight = #268BD2
+primary = ${xrdb:color1:#222}
+secondary = ${xrdb:color0:#222}
+# alert = ${xrdb:color3:#222}
+alert = ${xrdb:color2:#222}
+
+;------------------------;
+; POLYBAR/TOP  ;
+;-----------------------;
+
+[bar/main]
+
+line-size = 1
+border-size = 0
+;border-color = #00000000
+module-margin-left = 2
+module-margin-right = 2
+; separator = |
+
+;---------------------;
+; DIMENSIONS ;
+;--------------------;
+width = 100%
+height = 20
+offset-y = 0
+offset-x = 0
+
+border-top-size = 0
+border-bottom-size = 0
+border-right-size = 0
+border-left-size = 0
+
+;-----------------;
+; LOCATION ;
+;----------------;
+bottom = false
+
+
+spacing = 0
+padding-right = 2
+module-margin = 2
+
+font-0 = "Noto Sans:style:Regular:pixelsize=8.5;3"
+font-1 = "Iosevka:style:Regular:pixelsize=9;3"
+font-2 = "Font Awesome:style=Regular:pixelsize=10;3"
+font-3 = "Font Awesome 4 Free:style=Regular:pixelsize=11;3"
+
+modules-left = i3
+modules-center = spotify
+modules-right = cpu memory volume wireless-network battery date
+
+[bar/bottom]
+monitor = eDP-1
+bottom = true
+width = 100%
+height = 23
+
+background = ${bar/top.background}
+foreground = ${bar/top.foreground}
+
+line-color = ${bar/top.background}
+line-size = 2
+
+
+[module/battery]
+type = internal/battery
+battery = BAT1
+adapter = AC
+full-at = 100
+
+format-charging =  <animation-charging> <label-charging>
+label-charging = %percentage%%
+format-charging-foreground = ${colors.foreground}
+animation-charging-framerate = 700
+
+format-discharging = <ramp-capacity><label-discharging>
+label-discharging =  %percentage%%
+format-charging-spacing = 1
+format-discharging-spacing = 1
+label-discharging-foreground = ${colors.foreground}
+
+format-full = <label-full>
+label-full = %percentage%%
+format-full-prefix-foreground = ${colors.secondary}
+format-full-foreground = ${colors.secondary}
+format-full-prefix = " "
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+ramp-capacity-0-foreground = ${colors.alert}
+ramp-capacity-1-foreground = ${colors.foreground}
+ramp-capacity-2-foreground = ${colors.foreground}
+ramp-capacity-3-foreground = ${colors.foreground}
+ramp-capacity-4-foreground = ${colors.foreground}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 =  
+
+
+format-prefix-foreground = ${colors.foreground}
+label-foreground = ${colors.foreground}
+
+[module/spotify]
+type = custom/script
+exec = ~/.config/polybar/spotify
+interval = 2
+
+[module/i3]
+type = internal/i3
+format = <label-state><label-mode>
+;wrapping-scroll = true
+enable-click = true
+enable-scroll = false
+strip-wsnumbers = true
+; index-sort = false
+
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;4
+ws-icon-4 = 5;5
+ws-icon-5 = 6;6
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+
+label-focused = %icon% 
+label-focused-foreground = ${colors.foreground}
+label-focused-background = ${colors.primary}
+label-focused-padding = 2
+;label-focused-underline = ${colors.foreground}
+
+label-unfocused = %icon%
+label-unfocused-foreground = ${colors.foreground}
+label-unfocused-background = #000000
+label-unfocused-padding = 2
+
+label-urgent = %icon%
+label-urgent-foreground = ${colors.alert}
+label-urgent-padding = 2
+
+;label-mode = %mode%
+;label-mode-foreground = ${colors.alert}
+;label-mode-background = ${colors.primary}
+;label-mode-padding = 1
+
+;label-separator =|
+;label-separator-padding = 0
+;label-separator-foreground = ${colors.background}
+
+[module/cpu]
+type = internal/cpu
+interval = 0.5
+format = <label> <ramp-coreload>
+label = CPU
+
+ramp-coreload-0 = ▁
+ramp-coreload-0-foreground = #aaff77
+ramp-coreload-1 = ▂
+ramp-coreload-1-foreground = #aaff77
+ramp-coreload-2 = ▃
+ramp-coreload-2-foreground = #aaff77
+ramp-coreload-3 = ▄
+ramp-coreload-3-foreground = #aaff77
+ramp-coreload-4 = ▅
+ramp-coreload-4-foreground = #fba922
+ramp-coreload-5 = ▆
+ramp-coreload-5-foreground = #fba922
+ramp-coreload-6 = ▇
+ramp-coreload-6-foreground = #ff5555
+ramp-coreload-7 = █
+ramp-coreload-7-foreground = #ff5555
+
+[module/date]
+type = internal/date
+date =    %%{F#99}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M%%{F-}
+date-alt = %%{F#fff}%A, %d %B %Y  %%{F#fff}%H:%M%%{F#666}:%%{F#fba922}%S%%{F-}
+
+[module/memory]
+type = internal/memory
+format = <label> <bar-used>
+label = RAM
+
+bar-used-width = 8
+bar-used-foreground-0 = #aaff77
+bar-used-foreground-1 = #aaff77
+bar-used-foreground-2 = #fba922
+bar-used-foreground-3 = #ff5555
+bar-used-indicator = |
+bar-used-indicator-font = 6
+bar-used-indicator-foreground = #ff
+bar-used-fill = ─
+bar-used-fill-font = 6
+bar-used-empty = ─
+bar-used-empty-font = 6
+bar-used-empty-foreground = #444444
+
+[module/mpd]
+type = internal/mpd
+format-online = <icon-prev> <icon-stop> <toggle> <icon-next>  <icon-repeat> <icon-random>  <bar-progress> <label-time>  <label-song>
+
+icon-play = 
+icon-pause = 
+icon-stop = 
+icon-prev = 
+icon-next = 
+icon-random = 
+icon-repeat = 
+
+toggle-on-foreground =
+toggle-off-foreground = #55
+
+bar-progress-width = 45
+bar-progress-format = %{A4:mpdseek+2: A5:mpdseek-2:}%fill%%indicator%%empty%%{A A}
+bar-progress-indicator = |
+bar-progress-indicator-foreground = #ff
+bar-progress-indicator-font = 3
+bar-progress-fill = ─
+bar-progress-fill-foreground = #bb
+bar-progress-fill-font = 3
+bar-progress-empty = ─
+bar-progress-empty-font = 3
+bar-progress-empty-foreground = #44
+
+[module/wireless-network]
+type = internal/network
+interface = wlp2s0
+interval = 3.0
+ping-interval = 10
+
+format-connected = <ramp-signal> <label-connected> 
+label-connected = %essid%
+label-disconnected =    not connected
+label-disconnected-foreground = #66
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+
+animation-packetloss-0 = 
+animation-packetloss-0-foreground = #ffa64c
+animation-packetloss-1 = 
+animation-packetloss-1-foreground = ${bar/top.foreground}
+animation-packetloss-framerate = 500
+
+
+; vim:ft=dosini
